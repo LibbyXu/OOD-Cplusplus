@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>30</x>
+      <y>0</y>
+      <w>190</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>**Class**
+--
+- field
+
+--
++ methods
+
+
+fontsize=16
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>300</x>
+      <y>20</y>
+      <w>700</w>
+      <h>450</h>
+    </coordinates>
+    <panel_attributes>**:Account**
+--
+- banckID:int
+- customerName:string
+- actType:string
+- acctBalance:double
+- pin:int
+- acctNumber:int
+- stripNumber:int
+
+- acctNumberIncrementor:int (100000) static
+
+--
++ Account(banckId:int,customerName:string,actType:string,acctBalance:double,pin:int)
++ getBankID:int
++ getCustomerName():string
++ getAcctNumber():int
++ getAcctType():string
++ getAcctBalance():double
++ setAcctBalance(newAcctBalance:double):double
++ getPin():in
++ getStripNumber():int
+
++ generateStripNumber(bankId:int):int
++ generateAcctNumber(stripNumber:int, acctType:string):int
+
+
+fontsize=16
+bg=magenta</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>300</x>
+      <y>480</y>
+      <w>410</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>**:ATM**
+--
+friend :istream
+friend :ostream
+
+--
+- networkBanksOnATM:BankNetwork
+- theTransaction:Trasaction 
+
+--
++ ATM(newBankNetwork:BankNetwork)
++ isStripRedable(theCard:Card):bool
++ isATMCardBankInNetword(theCard:Card):bool
++ insertPin(theCard:Card, Pin:int):bool
++ pickAcctToAccess():void
++ amtToWithdraw():void
++ getTransactionInfo():void
+
+
+fontsize=16
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>0</x>
+      <y>260</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>:ATM
+bg=blue
+fontsize=16</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>0</x>
+      <y>310</y>
+      <w>130</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>:Customer
+bg=orange
+fontsize=16</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>0</x>
+      <y>360</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>:BankNetwork
+bg=pink
+fontsize=16</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>0</x>
+      <y>210</y>
+      <w>130</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>:BankComputer
+bg=gray
+fontsize=16</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>0</x>
+      <y>160</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>:TestATM
+bg=green
+fontsize=16
+//usually we will have tests towards this</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>0</x>
+      <y>410</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>:Card
+bg=yellow
+fontsize=16</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>0</x>
+      <y>460</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>:Transaction
+bg=red
+fontsize=16</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>0</x>
+      <y>510</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>:Account
+bg=magenta
+fontsize=16</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1080</x>
+      <y>610</y>
+      <w>470</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>**:BankComputer**
+--
+- bankID:int = 9
+- bankName:string
+- accounts:vector&lt;Account&gt;
+
++ numberOfBanks:int =0 static
+
+--
++ BankComputer(newBankName:String)
++ getBankId():int
++ getBankName():string
++ addAccount(newAccount:Account):void
++ verifyTheStripNumber(theVard:Card):bool
++ verifyThePin(theTransaction:Transaction):bool
++ requestWithdrawAmt(theTransaction:Transaction):void
+
+
+fontsize=16
+bg=gray
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>740</x>
+      <y>510</y>
+      <w>260</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>**:Card**
+--
+- stripNumber:int
+- pin:int
+
+--
++ Card(strpNumber:int)
++ Card(pin:int,stripNumber:int)
++ getStripNumber():int
++ getPin():int
++ setPin(pin:int):void
++ setStripNumber(newStripNumber:int):void
+
+fontsize=16
+bg=yellow
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>290</x>
+      <y>770</y>
+      <w>510</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>**:BankNetwork**
+--
+- bankInDatabase:vector&lt;bankComputer&gt;
+
+--
++ BankNetwork()
++ isATMCardsInNetwork(theCard:Card):bool
++ verifyThePin(theTransaction:Transaction):bool
++ getFirstTwoDigit(stripNumber:int):int static
++ requestWithdrawAmt(theTransaction:Transaction):void
+
+
+fontsize=16
+bg=pink
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1020</x>
+      <y>20</y>
+      <w>530</w>
+      <h>570</h>
+    </coordinates>
+    <panel_attributes>**:Transaction**
+--
+- banckID:int
+- currentDateTime:string
+- customerName:string
+- acctBalance:double
+- withDrawalAmt:double
+- acctNumberUsed:int
+- pin:int
+- stripNumber:int
+- acctToWithdrawalFrom:int
+- didCardVerify:bool
+
+--
++ Transaction(stripNumber:int)
++ getBankId():int;
++ getCurrentDateTime():string
++ getCustomerName():string
++ setCustormerName(customerName:string):void
++ getPin():int
++ setPin(pin:int):void
++ getStripNumber():int
++ setStripNumber(stripNumber:int):void
++ setDidCardVerify(acctToWithdrawalFrom:int):void
++ getDidCardVerify():bool
++ setAcctToWithdrawalFrom(acctToWithdrawalFrom:int):void
++ getAcctToWithdrawalFrom():int
++ setWithdrawalAmt(withdrawalAmt:int):void
++ getWithdrawalAmt():double
++ getAcctBalance:double
++ setActBalance(newAcctBalance:double):void
++ getAcctBalance():double
+ 
+
+fontsize=16
+bg=red
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>810</x>
+      <y>780</y>
+      <w>260</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>**:Coustomer**
+--
+- customerATMCard:Card
+
+--
++ Customer(newATMCard:Card)
++ getATMCard():Card
+
+
+fontsize=16
+bg=ORANGE</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

@@ -1,0 +1,116 @@
+Understanding the rules of GRASP patterns will help you crate good OO design
+
+There are 9 GRASP patterns:
+1. Creater
+2. Expert
+3. Low Coupling
+4. Contoller
+5. High Cohesion
+6. Polymorphism
+7. PureFabrication
+8. Indirection
+9. Protected Variations
+
+------------------------------------------------------------------------------------------------
+
+1. Creater
+
+What object should create object B?
+Object A should create object B:
+    Object A contains object B
+    Object A saves object B to a file or database
+    Object A uses object B
+    Object A has all the data needed to instantiate object B
+    
+* If class are very similar extend them from a class or interface
+* Implement getters and setters for all classes
+* Implement the saving and loading of class information from files and database inside of the classes
+
+------------------------------------------------------------------------------------------------
+
+2. Expert
+
+if object A is going to instantiate object B, it must have the info needed to create it
+Object A must be the expert on how to create object B
+
+------------------------------------------------------------------------------------------------
+
+3. Low Coupling
+
+I class with high coupling relies on many other calsses
+This type of class is:
+    Not reusable
+    Hard to understand in isolation
+    Easily broken of other classes change
+    
+CODE EXAMPLE
+* We get the same results, but now we aren't tied to specific classes
+* We can add additional classes without needing to change anything
+
+* Dependence: Class depends on another class, but it isn't a member of the class "Uses A"
+* Association: Class contains a reference to another "Has A"
+* Composition: Class holds an instance of another "Owns A / Part Of"
+* Inheritance: Implements or extends another class "Is A"
+
+* Dependence: Class that are independent so that changes in other classes have no effect
+* Avoid creating sub classes and if you do sub class interface or abstract classes
+* Add flexibility and encapsulation to classes to avoid major problems from high coupling
+
+------------------------------------------------------------------------------------------------
+
+4.Contoller
+
+What object stands between the UI and coordinates system operations?
+The controller represents the device that the software runs in
+In the ATM software example, the ATM object was the controller
+The controller will be the object that connects to most other objects in the sequence diagram
+
+* The UI forwards client requests to the contoller
+* The controller forwards requests to the proper system objects
+* This lowers compuling of the UI to system objects
+* This allows the UI to change without affecting the system
+* The UI should never handle logic, or act as the controller (Limits Reuse)
+* The UI shouldn't handle system events
+* If your controller is bloated create many of them representing differnet parts of the UI
+
+------------------------------------------------------------------------------------------------
+
+5. High Cohesion
+
+A measure of how focused the responsibilities of an object are
+Classes should be easy to comprehend, maintain and reusable
+Create classes that handle a few reponsibilities for one part of the system
+Classes should have very few methods and should work with other classes to fullfill a comlicated need
+If in doubt delegate!//委托
+
+------------------------------------------------------------------------------------------------
+
+6.Polymorphism
+
+Polaymorphism is used to dynamically handle similar object types
+Eliminate cONDITIONAL sTATEMENTS
+CODE EXAMPLE
+
+------------------------------------------------------------------------------------------------
+
+7. PureFabrication
+
+Create classes to improve code reuse while limiting coupling
+Pure Fabrication = No Real World Countpart
+Information Experts cause High coupling
+GOF Patterns: Adapter, Command, Strategy, etc.
+
+------------------------------------------------------------------------------------------------
+
+8. Indirection
+
+Avoid coupling by separating objects with an intermediate object
+Adaptors allow system objects to interact with external interfaces
+GOF: Adapter, Bridge, Facade, Observer, Mediator
+
+------------------------------------------------------------------------------------------------
+
+9. Protected Variations
+
+How do you design objects so that variation doesn't have bad effects?
+Solution: Look for elemetns with couling that may change and surround them with a stable interface
